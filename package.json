@@ -14,7 +14,10 @@
     "android:apk:dev": "cp .env.development .env && MY_ENV=.env.development npx react-native run-android --variant=devRelease",
     "android:apk:stg": "cp .env.staging .env && MY_ENV=.env.staging npx react-native run-android --variant=stagingRelease",
     "android:apk:prod": "cp .env.production .env && MY_ENV=.env.production npx react-native run-android --variant=productionRelease",
-    "pod": "cd ios && pod install && cd .."
+    "pod": "cd ios && pod install && cd ..",
+    "ios:dev": "cp .env.development .env && MY_ENV=.env && npx react-native run-ios --mode Debug --scheme champ_template_dev",
+    "ios:stg": "cp .env.staging .env && MY_ENV=.env && npx react-native run-ios --mode Debug --scheme champ_template_stg",
+    "ios:prod": "cp .env.production .env && MY_ENV=.env && npx react-native run-ios --mode Debug --scheme champ_template"
   },
   "dependencies": {
     "@react-navigation/native": "^7.0.14",

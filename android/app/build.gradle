@@ -73,13 +73,49 @@ def enableProguardInReleaseBuilds = false
 def jscFlavor = 'io.github.react-native-community:jsc-android:2026004.+'
 
 android {
+
+    flavorDimensions "default"
+    productFlavors {
+        dev {
+            applicationId "com.champtemplate.app.dev"
+            resValue "string", "app_name", "Champ Template dev"
+            dimension "default"
+        }
+        staging {
+            applicationId "com.champtemplate.app.staging"
+            resValue "string", "app_name", "Champ Template stg"
+            dimension "default"
+        }
+        production {
+            applicationId "com.champtemplate.app"
+            resValue "string", "app_name", "Champ Template"
+            dimension "default"
+        }
+    }
+
+    applicationVariants.all { variant ->
+        variant.outputs.all { output ->
+            def flavorName = variant.productFlavors[0].name  // dev, staging, production
+            def buildType = variant.buildType.name  // debug, release
+            def versionCode = variant.versionCode
+            def versionName = variant.versionName
+
+            // ✅ Define custom APK name format
+            def apkName = "champ-${flavorName}-${buildType}-v${versionName}(${versionCode}).apk"
+
+            // ✅ Ensure output file is named correctly
+            output.outputFileName = apkName
+        }
+    }
+    
+
     ndkVersion rootProject.ext.ndkVersion
     buildToolsVersion rootProject.ext.buildToolsVersion
     compileSdk rootProject.ext.compileSdkVersion
 
     namespace "com.champtemplate.app"
     defaultConfig {
-        applicationId "com.champtemplate.app"
+        // applicationId "com.champtemplate.app"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1

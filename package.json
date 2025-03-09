@@ -7,15 +7,24 @@
     "ios": "react-native run-ios",
     "lint": "eslint .",
     "start": "react-native start",
-    "test": "jest"
+    "test": "jest",
+    "android:dev": "cp .env.development .env && MY_ENV=.env && npx react-native run-android --mode devDebug",
+    "android:stg": "cp .env.staging .env && MY_ENV=.env npx react-native run-android --mode stagingDebug",
+    "android:prod": "cp .env.production .env && MY_ENV=.env npx react-native run-android --mode productionDebug",
+    "android:apk:dev": "cp .env.development .env && MY_ENV=.env.development npx react-native run-android --variant=devRelease",
+    "android:apk:stg": "cp .env.staging .env && MY_ENV=.env.staging npx react-native run-android --variant=stagingRelease",
+    "android:apk:prod": "cp .env.production .env && MY_ENV=.env.production npx react-native run-android --variant=productionRelease",
+    "pod": "cd ios && pod install && cd .."
   },
   "dependencies": {
     "@react-navigation/native": "^7.0.14",
     "@react-navigation/native-stack": "^7.2.0",
+    "axios": "^1.8.1",
     "i18next": "^24.2.2",
     "react": "19.0.0",
     "react-i18next": "^15.4.1",
     "react-native": "0.78.0",
+    "react-native-dotenv": "^3.4.11",
     "react-native-reanimated": "^3.17.1",
     "react-native-safe-area-context": "^5.2.0",
     "react-native-screens": "^4.9.0"
@@ -33,6 +42,7 @@
     "@react-native/typescript-config": "0.78.0",
     "@types/jest": "^29.5.13",
     "@types/react": "^19.0.0",
+    "@types/react-native-dotenv": "^0.2.2",
     "@types/react-test-renderer": "^19.0.0",
     "eslint": "^8.19.0",
     "jest": "^29.6.3",

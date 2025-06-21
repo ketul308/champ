@@ -17,7 +17,6 @@ export const style = (theme: ThemeType) => StyleSheet.create({
         fontSize: scaleFont(28),
         fontWeight: 'bold',
         color: theme.text,
-        marginBottom: scaleHeight(30),
     },
     input: {
         width: scaleWidth(300),

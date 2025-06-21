@@ -1,15 +1,19 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, Button } from 'react-native';
+import { useTranslation } from 'react-i18next';
 import Animated, { FadeInDown, FadeInUp } from 'react-native-reanimated';
 import { useNavigation } from '@react-navigation/native';
 
+// styles
 import { style } from './style';
 import { useTheme } from '../../../context/ThemeContext';
-import { useTranslation } from 'react-i18next';
+
+// utilities
 import i18n, { languages } from '../../../utils/i18n';
 import { STRINGS } from '../../../utils/locales/strings';
 import { AUTH_SCREENS } from '../../../navigation/AuthNavigator';
 import { useAuth } from '../../../context/AuthContext';
+import { apiConfig } from '../../../config/apiConfig';
 
 const LoginScreen = () => {
 
@@ -30,6 +34,7 @@ const LoginScreen = () => {
 
     return (
         <View style={styles.container}>
+            <Text>{apiConfig.BASE_URL}</Text>
             <View style={styles.viewRowCenter}>
                 <Button title='English' onPress={() => i18n.changeLanguage(languages.english)} />
                 <Button title='Spanish' onPress={() => i18n.changeLanguage(languages.spanish)} />

@@ -81,12 +81,12 @@ android {
             resValue "string", "app_name", "Champ Template dev"
             dimension "default"
         }
-        staging {
-            applicationId "com.champtemplate.app.staging"
+        stg {
+            applicationId "com.champtemplate.app.stg"
             resValue "string", "app_name", "Champ Template stg"
             dimension "default"
         }
-        production {
+        prod {
             applicationId "com.champtemplate.app"
             resValue "string", "app_name", "Champ Template"
             dimension "default"
@@ -95,7 +95,7 @@ android {
 
     applicationVariants.all { variant ->
         variant.outputs.all { output ->
-            def flavorName = variant.productFlavors[0].name  // dev, staging, production
+            def flavorName = variant.productFlavors[0].name  // dev, stg, prod
             def buildType = variant.buildType.name  // debug, release
             def versionCode = variant.versionCode
             def versionName = variant.versionName

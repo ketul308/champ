@@ -11,7 +11,7 @@
     "android:dev": "cp .env.dev .env && npx react-native run-android --mode devDebug",
     "android:stg": "cp .env.stg .env && npx react-native run-android --mode stgDebug",
     "android:prod": "cp .env.prod .env && npx react-native run-android --mode prodDebug",
-    "android:apk:dev": "cp .env.dev .env && npx react-native run-android --mode evRelease",
+    "android:apk:dev": "cp .env.dev .env && npx react-native run-android --mode devRelease",
     "android:apk:stg": "cp .env.stg .env && npx react-native run-android --mode stgRelease",
     "android:apk:prod": "cp .env.prod .env && npx react-native run-android --mode prodRelease",
     "pod": "cd ios && pod install && cd ..",
@@ -30,7 +30,8 @@
     "react-native-dotenv": "^3.4.11",
     "react-native-reanimated": "^3.17.1",
     "react-native-safe-area-context": "^5.2.0",
-    "react-native-screens": "^4.9.0"
+    "react-native-screens": "^4.9.0",
+    "react-native-system-navigation-bar": "^2.6.4"
   },
   "devDependencies": {
     "@babel/core": "^7.25.2",

@@ -1,7 +1,7 @@
-import React, { useMemo } from 'react';
+import React, { useEffect, useMemo } from 'react';
 import { SafeAreaView, StyleSheet } from 'react-native';
+import SystemNavigationBar from 'react-native-system-navigation-bar';
 import { DarkTheme, DefaultTheme, NavigationContainer, } from '@react-navigation/native';
-
 import { useAuth } from '../context/AuthContext';
 import { Theme, useTheme } from '../context/ThemeContext';
 
@@ -16,8 +16,11 @@ const RootNavigator = () => {
 
     const { user } = useAuth();
     const { theme, } = useTheme();
-    const style = useMemo(() => styles(theme), [theme]);
+    const style = useMemo(() => styles(theme), [theme.mode]);
 
+    useEffect(() => {
+        theme.background && SystemNavigationBar.setNavigationColor(theme.background);
+    }, [theme.mode]);
 
     return (
         <NavigationContainer theme={theme.mode == Theme.DARK ? DarkTheme : DefaultTheme}>
